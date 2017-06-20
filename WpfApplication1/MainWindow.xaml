@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <GroupBox Header ="Group1">
+        <GroupBox Header ="Select Operand;">
             <StackPanel>
                 <RadioButton Content="Button1" Checked="RadioButton_Checked"/>
                 <RadioButton Content="Button2" Checked="RadioButton_Checked"/>
@@ -12,7 +12,7 @@
                 <TextBlock x:Name="textBlockSelected"/>
             </StackPanel>
         </GroupBox>
-        <GroupBox Header ="Group2">
+        <GroupBox Header ="Set Values;">
             <StackPanel Margin="0,100,0,0">
                 <Slider x:Name="slider1" ValueChanged="slider1_ValueChanged"/>
                 <TextBlock Text="{Binding Value, ElementName=slider1}"/>
@@ -22,7 +22,9 @@
                 <Button Content="Calc" Width="43" Click="Button_Click"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <TextBox HorizontalAlignment="Center" Height="23" Name="TextBox1" Text="{Binding ValueLeft}" VerticalAlignment="Top" Width="150"/>
+                    <TextBlock HorizontalAlignment="Center" Name="Operand" Text="{Binding Operand}" Width="20" VerticalAlignment="Center"/>
                     <TextBox HorizontalAlignment="Center" Height="23" Name="TextBox2" Text="{Binding ValueRight}" VerticalAlignment="Top" Width="150"/>
+                    <TextBlock Text=" = "/>
                     <TextBox HorizontalAlignment="Center" Height="23" Name="TextBox3" Text="{Binding ans}" VerticalAlignment="Top" Width="150"/>
                 </StackPanel>
             </StackPanel>

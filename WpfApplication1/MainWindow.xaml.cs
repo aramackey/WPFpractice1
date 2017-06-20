@@ -34,12 +34,30 @@ namespace WpfApplication1
             TextBox1.DataContext = Values;
             TextBox2.DataContext = Values;
             TextBox3.DataContext = Values;
+            Operand.DataContext = Values;
         }
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
             var radioButton = (RadioButton)sender;
             this.textBlockSelected.Text = radioButton.Content.ToString();
+
+            if (this.textBlockSelected.Text == "Button1")
+            {
+                Values.Operand = "+";
+            }
+            else if (this.textBlockSelected.Text == "Button2")
+            {
+                Values.Operand = "-";
+            }
+            else if (this.textBlockSelected.Text == "Button3")
+            {
+                Values.Operand = "*";
+            }
+            else
+            {
+                Values.Operand = "/";
+            }
         }
 
         private void slider1_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -63,7 +81,27 @@ namespace WpfApplication1
         {
 //            Values.ans=(String)Values.ValueLeft+"x"+(String)Values.ValueRight;
 //            double mult_answer = Values.ValueLeft * Values.ValueRight;
-            Values.ans = (Values.ValueRight * Values.ValueLeft).ToString();
+
+            if (Values.Operand == "+")
+            {
+                Values.ans = (Values.ValueLeft + Values.ValueRight).ToString();
+            }
+            else if (Values.Operand == "-")
+            {
+                Values.ans = (Values.ValueLeft - Values.ValueRight).ToString();
+            }
+            else if (Values.Operand == "*")
+            {
+                Values.ans = (Values.ValueLeft * Values.ValueRight).ToString();
+            }
+            else if (Values.Operand == "/")
+            {
+                Values.ans = (Values.ValueLeft / Values.ValueRight).ToString();
+            }
+            else
+            {
+                Values.ans = "Operand was not selected;";
+            }
         }
     }
 
@@ -74,11 +112,13 @@ namespace WpfApplication1
     {
         double _ValueLeft;
         double _ValueRight;
+        string _Operand="??";
         string _ans="Unset the values;";
 
         public double ValueLeft { get { return _ValueLeft; } set { _ValueLeft = value; NotifyPropertyChanged("ValueLeft"); } }
         public double ValueRight { get { return _ValueRight; } set { _ValueRight = value; NotifyPropertyChanged("ValueRight"); } }
         public string ans { get { return _ans; } set { _ans = value; NotifyPropertyChanged("ans"); } }
+        public string Operand { get { return _Operand; } set { _Operand = value; NotifyPropertyChanged("Operand"); } }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
