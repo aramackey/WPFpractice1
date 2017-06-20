@@ -42,6 +42,7 @@ namespace WpfApplication1
             var radioButton = (RadioButton)sender;
             this.textBlockSelected.Text = radioButton.Content.ToString();
 
+            // set operand depend on a selected radio button.
             if (this.textBlockSelected.Text == "Button1")
             {
                 Values.Operand = "+";
@@ -62,26 +63,19 @@ namespace WpfApplication1
 
         private void slider1_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-          //  var value1 = (Slider)sender;
             var value1 = (Slider)sender;
             Values.ValueLeft = value1.Value;
-            //Values.ans = Values.ValueLeft.ToString()+" x "+Values.ValueRight.ToString();
-            //Values.ans = (Values.ValueRight * Values.ValueLeft).ToString();
         }
 
         private void slider2_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             var value2 = (Slider)sender;
             Values.ValueRight = value2.Value;
-            //Values.ans = Values.ValueLeft.ToString()+" x "+Values.ValueRight.ToString();
-            //Values.ans = (Values.ValueRight * Values.ValueLeft).ToString();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-//            Values.ans=(String)Values.ValueLeft+"x"+(String)Values.ValueRight;
-//            double mult_answer = Values.ValueLeft * Values.ValueRight;
-
+            // run calcuration when the button is clicked.
             if (Values.Operand == "+")
             {
                 Values.ans = (Values.ValueLeft + Values.ValueRight).ToString();
